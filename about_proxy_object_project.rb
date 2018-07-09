@@ -19,6 +19,9 @@ class Proxy
   end
 
   # WRITE CODE HERE
+  def method_missing(method_name, *args, &block)
+    @object.__send__(method_name, *args) if method_name.match('channel')
+  end
 end
 
 # The proxy object should pass the following Koan:
